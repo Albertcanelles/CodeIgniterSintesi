@@ -1,0 +1,39 @@
+#ytvideo {
+    float: center;
+	margin-right:10px;
+}
+
+
+ul {
+    padding: 0;
+    margin: 50px;
+}
+
+ul.video li {
+    width: 320px;
+    height: 240px;
+    padding: 0;
+    float: left;
+    margin: 0 10px 10px 0;
+    overflow: hidden;
+    background: #e5e5e5;
+}
+
+
+ul.video li a {
+    font-family: georgia;
+    text-decoration: none;
+    display: block;
+    color: blue;
+    border: none;
+}
+
+ul.video li img {
+    border: none;
+    width:100%;
+}
+
+.currentvideo {
+	background: #bbb;
+}
+	

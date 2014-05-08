@@ -9,13 +9,6 @@
         <meta name="apple-touch-fullscreen" content="yes">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/snap.css');?>" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/demo.css');?>" />
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/label_better.css');?>" />
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/jquery.datetimepicker.css');?>"/>
-        <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.js');?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.datetimepicker.js');?>"></script>
-        <link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap.css');?>">
-        <link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap-theme.css');?>">
-        <script src="<?php echo base_url('assets/js/bootstrap.js');?>"></script>
     </head>
     <body>
         <div class="snap-drawers">
@@ -23,10 +16,10 @@
                 <div>
                     <h4>Menú Principal</h4>
                     <ul>
-                        <li><a href="<?php echo base_url('index.php/welcome/concert');?>">Concerts</a></li>
-                        <li><a href="<?php echo base_url('index.php/welcome/assajs');?>">Assajos</a></li>
-                        <li><a href="<?php echo base_url('index.php/welcome/video');?>">YouTube</a></li>
-                        <li><a href="<?php echo base_url('index.php/welcome/partitura');?>">Partitures</a></li>                      
+                        <li><a href="<?php echo base_url('index.php/welcome/vistaconcert');?>">Concerts</a></li>
+                        <li><a href="<?php echo base_url('index.php/welcome/vistaassaj');?>">Assajos</a></li>
+                        <li><a href="<?php echo base_url('index.php/welcome/vistavideos');?>">YouTube</a></li>
+                        <li><a href="<?php echo base_url('index.php/welcome/vistapartitures');?>">Partitures</a></li>               
                     </ul>
                 </div>
             </div>
@@ -37,23 +30,7 @@
 		
             <div id="toolbar">
                 <a href="#" id="open-left"></a>
-                <h1>Videos</h1>
-            </div>
-            <div>
-        <br>
-        <br>
-        <br>
-        <br>
-        <form class="bl_form" align="center" method="post" action="insertvideos">
-
-          <p><input type="text"  class="label_better" data-new-placeholder="Nom" placeholder="Nom" name="Nom"></p>
-          <p><input type="text"   class="label_better" data-new-placeholder="Link" placeholder="Link" name="Link"  ></p>
-          
-        
-         
-        <button type="submit" class="btn btn-success">Acceptar</button>
-        
-        </form>
+                <h1>Benvingut Agustí</h1>
             </div>
         </div>
         <script type="text/javascript" src="<?php echo base_url('assets/js/snap.js');?>"></script>

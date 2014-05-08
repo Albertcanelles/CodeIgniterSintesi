@@ -23,10 +23,10 @@
                 <div>
                     <h4>Menú Principal</h4>
                     <ul>
-                        <li><a href="<?php echo base_url('index.php/welcome/concert');?>">Concerts</a></li>
-                        <li><a href="<?php echo base_url('index.php/welcome/assajs');?>">Assajos</a></li>
-                        <li><a href="<?php echo base_url('index.php/welcome/video');?>">YouTube</a></li>
-                        <li><a href="<?php echo base_url('index.php/welcome/partitura');?>">Partitures</a></li>               
+                        <li><a href="<?php echo base_url('index.php/welcome/vistaconcert');?>">Concerts</a></li>
+                        <li><a href="<?php echo base_url('index.php/welcome/vistaassaj');?>">Assajos</a></li>
+                        <li><a href="<?php echo base_url('index.php/welcome/vistavideos');?>">YouTube</a></li>
+                        <li><a href="<?php echo base_url('index.php/welcome/vistapartitures');?>">Partitures</a></li>               
                     </ul>
                 </div>
             </div>
@@ -44,15 +44,42 @@
         <br>
         <br>
         <br>
-        <form class="bl_form" align="center" method="post" action="insertarassajs">
-          <p><input type="text"  class="label_better" data-new-placeholder="Assajs" placeholder="Assajs" name="Assajs"></p>
-          <p><input type="text"   class="label_better" data-new-placeholder="Lloc" placeholder="Lloc" name="Lloc"  ></p>
-          <p><input type="text"   class="label_better" data-new-placeholder="Prox. Actuació" placeholder="Prox. Actuació" name="proxact" ></p>
-         <p><input type="text"     class="label_better" id="datetimepicker" placeholder="Dia Hora" name="Diahora" ></p>
-         
-        <button type="submit" class="btn btn-success">Acceptar</button>
-        
-        </form>
+        <table cellpadding="0" cellspacing="0" border="0" id="botons" class="table table-striped" width="100%" align="center">
+        <thead bgcolor=#819FF7>
+            <tr>
+                <th>ID</th>
+                <th>Assajs</th>
+                <th>DiaHora</th>
+                <th>Lloc</th>
+                <th>Proxima Actuació</th>
+                <th>Accions</th>
+                
+            </tr>
+        </thead>
+        <tbody>  
+            <?php foreach($this->_ci_cached_vars as $index => $llistarconcert){ ?>
+            <tr>
+                <td><?php echo $llistarconcert['id_assajs']; ?></td>
+                <td><?php echo $llistarconcert['Assajs']; ?></td>
+                <td><?php echo $llistarconcert['DiaHora']; ?></td>
+                <td><?php echo $llistarconcert['Lloc']; ?></td>
+                <td><?php echo $llistarconcert['ProxActuacio']; ?></td>  
+                <td>
+                    <a href='/codeigniterusuaris/index.php/usuaris/modificar/<?php echo $llistarconcert['id']; ?>'>
+                        <button type="button" class="btn btn-warning btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span> 
+                        </button>
+                    </a>&nbsp;
+                    <a href='/codeigniterusuaris/index.php/usuaris/eliminare/<?php echo $llistarconcert['id']; ?>'>
+                        <button type="button" class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-remove"></span> 
+                        </button>
+                    </a> 
+                </td>
+            </tr>
+            <?php } ?>
+        </tbody>
+    </table>
             </div>
         </div>
         <script type="text/javascript" src="<?php echo base_url('assets/js/snap.js');?>"></script>

@@ -5,21 +5,10 @@ class Welcome extends CI_Controller {
       
       parent::__construct();
       $this->load->helper('url');
+      $this->load->database();
+      $this->load->model('model_concerts');
     } 
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -  
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in 
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see http://codeigniter.com/user_guide/general/urls.html
+	/*
 	 */
 	public function index()
 	{
@@ -29,22 +18,92 @@ class Welcome extends CI_Controller {
 	public function concert()
 	{
 		$this->load->view('Concerts');
+		
+	}
+
+	public function insertarconcert() {
+		$concerts = $this->input->post('Concert');
+		$lloc = $this->input->post('Lloc');
+		$roba = $this->input->post('Roba');
+		$data = $this->input->post('Diahora');
+		$lparti = $this->select->post('ListPartitures');
+		$this->model_concerts->insertConcert($concerts, $lloc, $roba, $data,$lparti);
+		$this->load->view('Concerts');
 	}
 	
 	public function assajs()
 	{
 		$this->load->view('Assajos');
+		
+	}
+
+	public function insertarassajs() {
+		$asaj = $this->input->post('Assajs');
+		$lloc = $this->input->post('Lloc');
+		$proxact = $this->input->post('proxact');
+		$data = $this->input->post('Diahora');		
+		$this->model_concerts->insertAssajs($asaj, $lloc, $proxact, $data);
+		$this->load->view('Assajos');
+	}
+
+	public function insertvideos() {
+		$nom = $this->input->post('Nom');
+		$link = $this->input->post('Link');
+		$this->model_concerts->insertVideo($nom, $link);
+		$this->load->view('Videos');	
 	}
 	
 	public function video()
 	{
 		$this->load->view('Videos');
+		
 	}
 	
 	public function partitura()
 	{
 		$this->load->view('Partitures');
 	}
+
+	public function insertpartitura()
+	{
+		$nom = $this->input->post('Nom');
+		$partitura = $this->input->post('Partitura');
+		$this->model_concerts->insertPartitures($nom, $partitura);
+		$this->load->view('Partitures');
+	}
+
+	public function welcomemembers()
+	{
+		$this->load->view('welcome_members');
+	}
+
+
+	public function vistaassaj()
+	{
+		$this->load->model('model_concerts');
+		$data = $this->model_concerts->getassajs();
+		$this->load->view('vassaj', $data);
+	}
+	
+	public function vistaconcert()
+	{
+		$this->load->model('model_concerts');
+		$data = $this->model_concerts->getconcert();
+		$this->load->view('vconcert',$data);
+	}
+
+	public function vistapartitures()
+	{
+		$this->load->view('vpartitures');
+	}
+
+	public function vistavideos()
+	{
+		$this->load->model('model_concerts');
+		$data = $this->model_concerts->getvideos();
+		$this->load->view('vvideos', $data);
+	}
+
 }
 
 /* End of file welcome.php */

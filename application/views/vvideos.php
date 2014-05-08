@@ -9,11 +9,11 @@
         <meta name="apple-touch-fullscreen" content="yes">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/snap.css');?>" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/demo.css');?>" />
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/label_better.css');?>" />
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/jquery.datetimepicker.css');?>"/>
         <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.js');?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.datetimepicker.js');?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.youtubeplaylist.js');?>"></script>
         <link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap.css');?>"/>
+       
+        <link rel="stylesheet" href="<?php echo base_url('assets/css/youtube.css');?>"/>
         <link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap-theme.css');?>"/>
         <script src="<?php echo base_url('assets/js/bootstrap.js');?>"></script>
     </head>
@@ -22,11 +22,11 @@
             <div class="snap-drawer snap-drawer-left">
                 <div>
                     <h4>Menú Principal</h4>
-                    <ul>
-                        <li><a href="<?php echo base_url('index.php/welcome/concert');?>">Concerts</a></li>
-                        <li><a href="<?php echo base_url('index.php/welcome/assajs');?>">Assajos</a></li>
-                        <li><a href="<?php echo base_url('index.php/welcome/video');?>">YouTube</a></li>
-                        <li><a href="<?php echo base_url('index.php/welcome/partitura');?>">Partitures</a></li>               
+                    <ul class=menu>
+                        <li><a href="<?php echo base_url('index.php/welcome/vistaconcert');?>">Concerts</a></li>
+                        <li><a href="<?php echo base_url('index.php/welcome/vistaassaj');?>">Assajos</a></li>
+                        <li><a href="<?php echo base_url('index.php/welcome/vistavideos');?>">YouTube</a></li>
+                        <li><a href="<?php echo base_url('index.php/welcome/vistapartitures');?>">Partitures</a></li>               
                     </ul>
                 </div>
             </div>
@@ -34,26 +34,24 @@
         </div>
        
         <div id="content" class="snap-content">
-		
+		 <div>
+        <br>
+        <br>
+        <br>
+        <br>
+       <ul class="video">
+       <?php foreach($this->_ci_cached_vars as $index => $llistarvideos){ ?>
+            
+                <li><a href="<?php echo $llistarvideos['link']; ?>"></a></li>
+                
+            <?php } ?>
+        </ul>
+            </div>
             <div id="toolbar">
                 <a href="#" id="open-left"></a>
                 <h1>Assajos</h1>
             </div>
-            <div>
-        <br>
-        <br>
-        <br>
-        <br>
-        <form class="bl_form" align="center" method="post" action="insertarassajs">
-          <p><input type="text"  class="label_better" data-new-placeholder="Assajs" placeholder="Assajs" name="Assajs"></p>
-          <p><input type="text"   class="label_better" data-new-placeholder="Lloc" placeholder="Lloc" name="Lloc"  ></p>
-          <p><input type="text"   class="label_better" data-new-placeholder="Prox. Actuació" placeholder="Prox. Actuació" name="proxact" ></p>
-         <p><input type="text"     class="label_better" id="datetimepicker" placeholder="Dia Hora" name="Diahora" ></p>
-         
-        <button type="submit" class="btn btn-success">Acceptar</button>
-        
-        </form>
-            </div>
+           
         </div>
         <script type="text/javascript" src="<?php echo base_url('assets/js/snap.js');?>"></script>
         <script type="text/javascript">
@@ -76,6 +74,20 @@
     $('#datetimepicker_mask').datetimepicker({
     mask:'9999/19/39 29:59'
 });
-    </script>   
+    </script>  
+    <script type="text/ecmascript">
+    
+        $(function() {
+            $("ul.video").ytplaylist({
+                addThumbs:true, 
+                autoPlay: false, 
+                playerWidth: '320',
+                playerHeight: '240',
+                thumbSize: 'large',
+                showInline: true
+                });
+        });
+    
+</script>
     </body>
 </html>
