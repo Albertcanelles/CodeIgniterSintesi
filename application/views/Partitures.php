@@ -44,12 +44,19 @@
             <br>
             <br>
             <br>
-            <form class="bl_form" align="center" method="post" action="insertpartitura">
-          <p><input type="text"  class="label_better" data-new-placeholder="Nom" placeholder="Nom" name="Nom"></p>
-          <p><input type="file"   class="label_better" data-new-placeholder="Partitura" placeholder="Partitura" name="Partitura"  ></p>
-          <button type="submit" class="btn btn-success" name="insertConcert">Acceptar</button>
-        
-        </form>
+          
+          <? echo form_open_multipart('welcome/DoUpload');?>
+          <p> <label for="file"> Selecciona un fitxer</label>
+          <p> <input type="file" name="cipote" value="Envia" size="50" /></p>
+          
+        <p><button type="submit" class="btn btn-success" name="insertConcert">Acceptar</button></p>
+        <?php echo form_close();?>
+        <?php if($this->session->flashdata('success_upload'));?>
+            <div> 
+            <?php echo $this->session->flashdata('success_upload');?>
+            </div>
+
+        </div>
         </div>
         </div>
         <script type="text/javascript" src="<?php echo base_url('assets/js/snap.js');?>"></script>

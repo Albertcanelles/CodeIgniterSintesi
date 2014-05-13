@@ -12,10 +12,14 @@
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/label_better.css');?>" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/jquery.datetimepicker.css');?>"/>
         <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.js');?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.datetimepicker.js');?>"></script>
         <link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap.css');?>"/>
         <link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap-theme.css');?>"/>
         <script src="<?php echo base_url('assets/js/bootstrap.js');?>"></script>
+        <link rel="stylesheet" href="http://labs.voronianski.com/media/style/reset.css">
+        <link rel="stylesheet" href="<?php echo base_url('assets/css/popout.css');?>">
+        <link rel="stylesheet" href="<?php echo base_url('assets/css/avgrund.css');?>">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script src="<?php echo base_url('assets/js/jquery.avgrund.js');?>"></script>
     </head>
     <body>
         <div class="snap-drawers">
@@ -44,42 +48,24 @@
         <br>
         <br>
         <br>
-        <table cellpadding="0" cellspacing="0" border="0" id="botons" class="table table-striped" width="100%" align="center">
-        <thead bgcolor=#819FF7>
-            <tr>
-                <th>ID</th>
-                <th>Concert</th>
-                <th>DiaHora</th>
-                <th>Lloc</th>
-                <th>Roba</th>
-                <th>Accions</th>
-                
-            </tr>
-        </thead>
-        <tbody>  
-            <?php foreach($this->_ci_cached_vars as $index => $llistarconcert){ ?>
-            <tr>
-                <td><?php echo $llistarconcert['id_concert']; ?></td>
-                <td><?php echo $llistarconcert['Concert']; ?></td>
-                <td><?php echo $llistarconcert['DiaHora']; ?></td>
-                <td><?php echo $llistarconcert['Lloc']; ?></td>
-                <td><?php echo $llistarconcert['Roba']; ?></td>  
-                <td>
-                    <a href='/codeigniterusuaris/index.php/usuaris/modificar/<?php echo $llistarconcert['id']; ?>'>
-                        <button type="button" class="btn btn-warning btn-sm">
-                            <span class="glyphicon glyphicon-pencil"></span> 
-                        </button>
-                    </a>&nbsp;
-                    <a href='/codeigniterusuaris/index.php/usuaris/eliminare/<?php echo $llistarconcert['id']; ?>'>
-                        <button type="button" class="btn btn-danger btn-sm">
-                            <span class="glyphicon glyphicon-remove"></span> 
-                        </button>
-                    </a> 
-                </td>
-            </tr>
-            <?php } ?>
-        </tbody>
-    </table>
+         <?php foreach($this->_ci_cached_vars as $index => $llistarconcert){ ?>
+        <a href="" id="a<?php echo $llistarconcert['id_concert'];?>" class="button left"><?php echo $llistarconcert['Concert'];?></a>
+
+    <script>
+    $(function() {
+        $('#a<?php echo $llistarconcert['id_concert'];?>').avgrund({
+            height: 500,
+            holderClass: 'custom',
+            showClose: true,
+            showCloseText: 'close',
+            onBlurContainer: '.container',
+            template: '<p><?php echo $llistarconcert['Concert'];?></p>' + '<p><?php echo $llistarconcert['DiaHora'];?></p>' + '<p><?php echo $llistarconcert['Lloc'];?></p>' + '<p><?php echo $llistarconcert['Roba'];?></p>' 
+        });
+    });
+    </script>
+    <?php } ?>
+
+     
             </div>
         </div>
         <script type="text/javascript" src="<?php echo base_url('assets/js/snap.js');?>"></script>

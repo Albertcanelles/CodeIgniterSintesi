@@ -44,15 +44,36 @@
         <br>
         <br>
         <br>
-        <form class="bl_form" align="center" method="post">
-          <p><input type="text"  class="label_better" data-new-placeholder="Assajs" placeholder="Assajs" name="Assajs"></p>
-          <p><input type="text"   class="label_better" data-new-placeholder="Lloc" placeholder="Lloc" name="Lloc"  ></p>
-          <p><input type="text"   class="label_better" data-new-placeholder="Prox. Actuació" placeholder="Prox. Actuació" name="proxact" ></p>
-         <p><input type="text"     class="label_better" id="datetimepicker" placeholder="Dia Hora" name="Diahora" ></p>
-         
-        <button type="submit" class="btn btn-success">Acceptar</button>
-        
-        </form>
+         <table cellpadding="0" cellspacing="0" border="0" id="botons" class="table table-striped" width="100%" align="center">
+        <thead bgcolor=#819FF7>
+            <tr>
+                <th>ID</th>
+                <th>Partitura</th>
+                <th>Accions </th>
+                
+            </tr>
+        </thead>
+        <tbody>  
+            <?php foreach($this->_ci_cached_vars as $index => $llistarpartitures){ ?>
+            <tr>
+                <td><?php echo $llistarpartitures['id_partitura']; ?></td>
+                <td><a href='<?php echo $llistarpartitures['Partitura'];?>'><?php echo $llistarpartitures['Nom']; ?> </a></td>
+                <td>
+                    <a href='/codeigniterusuaris/index.php/usuaris/modificar/<?php echo $llistarpartitures['id']; ?>'>
+                        <button type="button" class="btn btn-warning btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span> 
+                        </button>
+                    </a>&nbsp;
+                    <a href='/codeigniterusuaris/index.php/usuaris/eliminare/<?php echo $llistarpartitures['id']; ?>'>
+                        <button type="button" class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-remove"></span> 
+                        </button>
+                    </a> 
+                </td>
+            </tr>
+            <?php } ?>
+        </tbody>
+    </table>
             </div>
         </div>
         <script type="text/javascript" src="<?php echo base_url('assets/js/snap.js');?>"></script>

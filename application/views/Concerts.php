@@ -4,9 +4,9 @@
     <head>
         <title>Administració</title>
         <meta http-equiv="x-ua-compatible" content="IE=edge" />
-        <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
-        <meta name="apple-mobile-web-app-capable" content="yes">
-        <meta name="apple-touch-fullscreen" content="yes">
+        <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+        <meta name="apple-mobile-web-app-capable" content="yes"/>
+        <meta name="apple-touch-fullscreen" content="yes"/>
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/snap.css');?>" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/demo.css');?>" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/label_better.css');?>" />
@@ -37,6 +37,7 @@
                         <li><a href="<?php echo base_url('index.php/welcome/partitura');?>">Partitures</a></li>                       
                     </ul>
                 </div>
+                <div class="snap-drawer snap-drawer-right"></div>
             </div>
             
         </div>
@@ -67,38 +68,61 @@
         <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
         No
         </label>
-
-        <p>
-        <select name="ListPartitures" multiple="multiple" style="width:300" >
-        <option value="option1">Option 1</option>
-        <option value="option2">Option 2</option>
-        <option value="option3">Option 3</option>
-        <option value="option4">Option 4</option>
-        <option value="option5">Option 5</option>
-        <option value="option6">Option 6</option>
-        <option value="option7">Option 7</option>
-        </select>
-    </p>
-        <button type="submit" class="btn btn-success" name="insertConcert">Acceptar</button>
-        
+        <p><button type="submit" class="btn btn-success" name="insertConcert">Acceptar</button></p>
         </form>
-        
+        <br>
+        <table cellpadding="0" cellspacing="0" border="0" id="botons" class="table table-striped" width="100%" align="center">
+        <thead bgcolor=#819FF7>
+            <tr>
+                <th>ID</th>
+                <th>Concert</th>
+                <th>DiaHora</th>
+                <th>Lloc</th>
+                <th>Roba</th>
+                <th>Accions</th>
+                
+            </tr>
+        </thead>
+        <tbody>  
+            <?php foreach($this->_ci_cached_vars as $index => $llistarconcert){ ?>
+            <tr>
+                <td><?php echo $llistarconcert['id_concert']; ?></td>
+                <td><?php echo $llistarconcert['Concert']; ?></td>
+                <td><?php echo $llistarconcert['DiaHora']; ?></td>
+                <td><?php echo $llistarconcert['Lloc']; ?></td>
+                <td><?php echo $llistarconcert['Roba']; ?></td>  
+                <td>
+                    <a href='/codeigniterusuaris/index.php/usuaris/modificar/<?php echo $llistarconcert['id']; ?>'>
+                        <button type="button" class="btn btn-warning btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span> 
+                        </button>
+                    </a>&nbsp;
+                    <a href='/codeigniterusuaris/index.php/usuaris/eliminare/<?php echo $llistarconcert['id']; ?>'>
+                        <button type="button" class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-remove"></span> 
+                        </button>
+                    </a> 
+                </td>
+            </tr>
+            <?php } ?>
+        </tbody>
+    </table>
             </div>
         </div>
         <script type="text/javascript" src="<?php echo base_url('assets/js/snap.js');?>"></script>
-        <script type="text/javascript">
-            var snapper = new Snap({
-                element: document.getElementById('content'),
-                disable: 'right'
-            });
-            
-        </script>
        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/demo.css');?>" />
         <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){
             js=d.createElement(s);
             js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}
             }
-            (document,"script","twitter-wjs");</script>   
+            (document,"script","twitter-wjs");</script> 
+            <script type="text/javascript">
+            var snapper = new Snap({
+                element: document.getElementById('content'),
+                disable: 'right'
+            });
+            
+        </script>  
             <script type="text/javascript">
     $('#datetimepicker').datetimepicker()
     .datetimepicker({value:'Dia Hora',step:10});

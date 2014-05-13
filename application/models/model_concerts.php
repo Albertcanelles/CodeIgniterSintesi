@@ -6,11 +6,18 @@ class model_concerts extends CI_Model{
     {
         parent::__construct();
         $this->load->database();
+        
     }
+        
 
         function getconcert() {      
         $this->db->select('id_concert,Concert,DiaHora,Lloc,Roba');
         $query = $this->db->get('Concert');
+        return $query->result_array();
+    }
+        function getpartitures() {      
+        $this->db->select('id_partitura,Nom,Partitura');
+        $query = $this->db->get('Partitures');
         return $query->result_array();
     }
 
@@ -51,10 +58,10 @@ class model_concerts extends CI_Model{
        		$this->db->insert('Concert', $data);
         }
 
-        function insertPartitures($nom, $partitura) {
+        function insertPartitures($nom, $file_name) {
          $data = array(
         'Nom'=> $nom,
-        'Partitura'=> $partitura);
+        'Partitura'=> $file_name);
             $this->db->insert('Partitures', $data);   
         }
 }
