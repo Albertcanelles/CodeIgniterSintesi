@@ -5,7 +5,6 @@ class Welcome extends CI_Controller {
       
       parent::__construct();
       $this->load->database();
-      $this->load->library('form_validation');
       $this->load->model('model_concerts');
     } 
 	/*
@@ -30,29 +29,12 @@ class Welcome extends CI_Controller {
 		$passacalles = $this->input->post('optionsRadios');
 		//$lparti = $this->select->post('ListPartitures');
 		$this->model_concerts->insertConcert($concerts, $lloc, $roba, $data,$passacalles);
-		// Push The notification with parameters
-		$this->load->library('PushBots');
-		$pb = new PushBots();
-		// Application ID
-		$appID = '538380281d0ab1d1048b45a7';
-		// Application Secret
-		$appSecret = '347f3b8fffefeea0096dcfa17d4345b7';
-		$pb->App($appID, $appSecret);
-		// Notification msg
-		$msg="Un nou concert :D";
-		$pb->Alert($msg);
-
-		$platforms= array(0,1);
-		$pb->Platform($platforms);
-		// Push it !
-		$pb->Push();
 		redirect('welcome/concert');
 	}
 	
 	public function assajs()
 	{
-		$data = $this->model_concerts->getassajs();
-		$this->load->view('Assajos', $data);
+		$this->load->view('Assajos');
 		
 	}
 
@@ -62,21 +44,6 @@ class Welcome extends CI_Controller {
 		$proxact = $this->input->post('proxact');
 		$data = $this->input->post('Diahora');		
 		$this->model_concerts->insertAssajs($asaj, $lloc, $proxact, $data);
-		// Push The notification with parameters
-		$this->load->library('PushBots');
-		$pb = new PushBots();
-		// Application ID
-		$appID = '538380281d0ab1d1048b45a7';
-		// Application Secret
-		$appSecret = '347f3b8fffefeea0096dcfa17d4345b7';
-		$pb->App($appID, $appSecret);
-		// Notification msg
-		$msg="Un nou Assajs :D";
-		$pb->Alert($msg);
-		$platforms= array(0,1);
-		$pb->Platform($platforms);
-		// Push it !
-		$pb->Push();
 		redirect('welcome/assajs');	
 	}
 	
@@ -92,42 +59,26 @@ class Welcome extends CI_Controller {
 		$nom = $this->input->post('Nom');
 		$link = $this->input->post('Link');
 		$this->model_concerts->insertVideo($nom, $link);
-		// Push The notification with parameters
-		$this->load->library('PushBots');
-		$pb = new PushBots();
-		// Application ID
-		$appID = '538380281d0ab1d1048b45a7';
-		// Application Secret
-		$appSecret = '347f3b8fffefeea0096dcfa17d4345b7';
-		$pb->App($appID, $appSecret);
-		// Notification msg
-		$msg="Un nou video :D";
-		$pb->Alert($msg);
-		$platforms= array(0,1);
-		$pb->Platform($platforms);
-		// Push it !
-		$pb->Push();
 		redirect('welcome/video');	
-
 	}
 	
 	public function video()
 	{
-		$data = $this->model_concerts->getvideos();
-		$this->load->view('Videos', $data);		
+		$this->load->view('Videos');
+		
 	}
 	
 
-	public function membre() {
-		$data = $this->model_concerts->getUser();
-		$this->load->view('Membres', $data);
+	public function membre()
+	{
+		$this->load->view('Membres');
 		
 	}
 
+
 	public function partitura()
 	{
-		$data = $this->model_concerts->getpartitures();
-		$this->load->view('Partitures', $data);
+		$this->load->view('Partitures');
 	}
 
 	public function upload() {
@@ -158,21 +109,6 @@ class Welcome extends CI_Controller {
 			$nom = $this->upload->file_name;
 			$file_name = base_url()."partitures/".$this->upload->file_name;
 			$this->model_concerts->insertPartitures($nom, $file_name);
-			// Push The notification with parameters
-			$this->load->library('PushBots');
-			$pb = new PushBots();
-			// Application ID
-			$appID = '538380281d0ab1d1048b45a7';
-			// Application Secret
-			$appSecret = '347f3b8fffefeea0096dcfa17d4345b7';
-			$pb->App($appID, $appSecret);
-			// Notification msg
-			$msg="Una nova partitura :D";
-			$pb->Alert($msg);
-			$platforms= array(0,1);
-			$pb->Platform($platforms);
-			// Push it !
-			$pb->Push();
 			redirect('welcome/partitura');
 			}
 	}
@@ -209,34 +145,6 @@ class Welcome extends CI_Controller {
 		$this->load->model('model_concerts');
 		$data = $this->model_concerts->getvideos();
 		$this->load->view('vvideos', $data);
-	}
-
-	public function eliminarConcerts($id)
-	{
-		$this->load->model('model_concerts');
-		$this->model_concerts->eliminarConcert($id);
-		redirect('welcome/concert');
-	}
-
-	public function eliminarAssajos($id)
-	{
-		$this->load->model('model_concerts');
-		$this->model_concerts->eliminarAssajs($id);
-		redirect('welcome/assajs');
-	}
-
-	public function eliminarVideos($id)
-	{
-		$this->load->model('model_concerts');
-		$this->model_concerts->eliminarVideo($id);
-		redirect('welcome/video');
-	}
-
-	public function eliminarPartitures($id)
-	{
-		$this->load->model('model_concerts');
-		$this->model_concerts->eliminarPartitura($id);
-		redirect('welcome/partitura');
 	}
 
 	public function json_concerts() {

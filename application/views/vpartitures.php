@@ -1,102 +1,99 @@
-<!DOCTYPE HTML>
 <html lang="en-ES">
 <meta charset="utf-8">
     <head>
-          <title>Administració</title>
-        <meta http-equiv="x-ua-compatible" content="IE=edge" />
-        <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
-        <meta name="apple-mobile-web-app-capable" content="yes">
-        <meta name="apple-touch-fullscreen" content="yes">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/snap.css');?>" />
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/demo.css');?>" />
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/label_better.css');?>" />
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/jquery.datetimepicker.css');?>"/>
-        <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.js');?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.datetimepicker.js');?>"></script>
-        <link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap.css');?>"/>
-        <link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap-theme.css');?>"/>
-        <script src="<?php echo base_url('assets/js/bootstrap.js');?>"></script>
+  <link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap3.min.css');?>">
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/jquery.datetimepicker.css');?>"/>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+  <meta name="description" content="BlocksIt.js jQuery plugin Demonstration #2 Pinterest dynamic grid with CSS3 Transitions by inWebson.com"/>
+<meta name="keywords" content="demonstration,demo,jquery,blocksit.js,css3,dynamic,grid,layout,inwebson"/>
+<link rel='stylesheet' href='<?php echo base_url('assets/css/pinterest.css');?>' media='screen' />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<!--[if lt IE 9]>
+<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<script src="<?php echo base_url('assets/js/blocksit.js');?>"></script>
+<script>
+$(document).ready(function() {
+  //vendor script
+  $('#header')
+  .css({ 'top':-50 })
+  .delay(1000)
+  .animate({'top': 0}, 800);
+  
+  $('#footer')
+  .css({ 'bottom':-15 })
+  .delay(1000)
+  .animate({'bottom': 0}, 800);
+  
+  //blocksit define
+  $(window).load( function() {
+    $('#container').BlocksIt({
+      numOfCol: 4,
+      offsetX: 8,
+      offsetY: 8
+    });
+  });
+  
+  //window resize
+  var currentWidth = 1100;
+  $(window).resize(function() {
+    var winWidth = $(window).width();
+    var conWidth;
+    if(winWidth < 660) {
+      conWidth = 440;
+      col = 2
+    } else if(winWidth < 880) {
+      conWidth = 660;
+      col = 3
+    } else if(winWidth < 1100) {
+      conWidth = 880;
+      col = 4;
+    } else {
+      conWidth = 1100;
+      col = 5;
+    }
+    
+    if(conWidth != currentWidth) {
+      currentWidth = conWidth;
+      $('#container').width(conWidth);
+      $('#container').BlocksIt({
+        numOfCol: col,
+        offsetX: 8,
+        offsetY: 8
+      });
+    }
+  });
+});
+</script>
     </head>
     <body>
-        <div class="snap-drawers">
-            <div class="snap-drawer snap-drawer-left">
-                <div>
-                    <h4>Menú Principal</h4>
-                    <ul>
-                        <li><a href="<?php echo base_url('index.php/welcome/vistaconcert');?>">Concerts</a></li>
-                        <li><a href="<?php echo base_url('index.php/welcome/vistaassaj');?>">Assajos</a></li>
-                        <li><a href="<?php echo base_url('index.php/welcome/vistavideos');?>">YouTube</a></li>
-                        <li><a href="<?php echo base_url('index.php/welcome/vistapartitures');?>">Partitures</a></li>               
-                    </ul>
-                </div>
-            </div>
-            <div class="snap-drawer snap-drawer-right"></div>
-        </div>
-       
-        <div id="content" class="snap-content">
-		
-            <div id="toolbar">
-                <a href="#" id="open-left"></a>
-                <h1>Assajos</h1>
-            </div>
-            <div>
-        <br>
-        <br>
-        <br>
-        <br>
-         <table cellpadding="0" cellspacing="0" border="0" id="botons" class="table table-striped" width="100%" align="center">
-        <thead bgcolor=#819FF7>
-            <tr>
-                <th>ID</th>
-                <th>Partitura</th>
-                <th>Accions </th>
-                
-            </tr>
-        </thead>
-        <tbody>  
-            <?php foreach($this->_ci_cached_vars as $index => $llistarpartitures){ ?>
-            <tr>
-                <td><?php echo $llistarpartitures['id_partitura']; ?></td>
-                <td><a href='<?php echo $llistarpartitures['Partitura'];?>'><?php echo $llistarpartitures['Nom']; ?> </a></td>
-                <td>
-                    <a href='/codeigniterusuaris/index.php/usuaris/modificar/<?php echo $llistarpartitures['id']; ?>'>
-                        <button type="button" class="btn btn-warning btn-sm">
-                            <span class="glyphicon glyphicon-pencil"></span> 
-                        </button>
-                    </a>&nbsp;
-                    <a href='/codeigniterusuaris/index.php/usuaris/eliminare/<?php echo $llistarpartitures['id']; ?>'>
-                        <button type="button" class="btn btn-danger btn-sm">
-                            <span class="glyphicon glyphicon-remove"></span> 
-                        </button>
-                    </a> 
-                </td>
-            </tr>
-            <?php } ?>
-        </tbody>
-    </table>
-            </div>
-        </div>
-        <script type="text/javascript" src="<?php echo base_url('assets/js/snap.js');?>"></script>
-        <script type="text/javascript">
-            var snapper = new Snap({
-                element: document.getElementById('content'),
-                disable: 'right'
-            });
-            
-        </script>
-       <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/demo.css');?>" />
-        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){
-            js=d.createElement(s);
-            js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}
-            }
-            (document,"script","twitter-wjs");</script>   
-            <script type="text/javascript">
-    $('#datetimepicker').datetimepicker()
-    .datetimepicker({value:'Dia Hora',step:10});
+  <div class="navbar navbar-inverse">
+    <div class="navbar-header">     
+        <a class="navbar-brand" href="<?php echo base_url('index.php/welcome/welcomemembers');?>"><span class="glyphicon glyphicon-music"></span>
+Banda de Jesús</a>
+    </div>
+    <div class="navbar-collapse collapse navbar-inverse-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="<?php echo base_url('index.php/welcome/vistaconcert');?>">Concerts</a></li>
+          <li><a href="<?php echo base_url('index.php/welcome/vistaassaj');?>">Assajos</a></li>
+          <li class="active"><a href="<?php echo base_url('index.php/welcome/vistapartitures');?>">Partitures</a></li>
+          <li><a href="<?php echo base_url('index.php/welcome/vistavideos');?>">YouTube</a></li>
+      </ul>
+    </div>
+  </div>
+<section id="wrapper">
 
-    $('#datetimepicker_mask').datetimepicker({
-    mask:'9999/19/39 29:59'
-});
-    </script>   
+   <?php foreach($this->_ci_cached_vars as $index => $llistarpartitures){ ?>
+  <div class="grid">
+    <div class="imgholder">
+      <img src="http://www.inwebson.com/demo/blocksit-js/demo2/images/img27.jpg" />
+    </div>
+    <strong><a href='<?php echo $llistarpartitures['Partitura'];?>'><?php echo $llistarpartitures['Nom']; ?> </a></strong>
+
+  </div>
+   <?php } ?>
+   
+  </section>
+ 
     </body>
 </html>

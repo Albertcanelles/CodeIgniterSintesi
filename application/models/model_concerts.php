@@ -11,7 +11,7 @@ class model_concerts extends CI_Model{
         
 
         function getconcert() {      
-        $this->db->select('id_concert,Concert,DiaHora,Lloc,Roba');
+        $this->db->select('id_concert,Concert,DiaHora,Lloc,Roba,Passcalles');
         $query = $this->db->get('Concert');
         return $query->result_array();
     }
@@ -22,7 +22,7 @@ class model_concerts extends CI_Model{
     }
 
           function getvideos() {      
-        $this->db->select('link');
+        $this->db->select('id_video, Nomvideo, link');
         $query = $this->db->get('Videos');
         return $query->result_array();
     }
@@ -32,6 +32,12 @@ class model_concerts extends CI_Model{
         $query = $this->db->get('Assajs');
         return $query->result_array();
     }
+
+        function getUser() {
+            $this->db->select('id_membre,usuari,rol');
+            $query = $this->db->get('Membres');
+            return $query->result_array();
+        }
         function insertAssajs($asaj, $lloc, $proxact, $data){
         $data = array(
         'Assajs'=> $asaj,
@@ -47,14 +53,22 @@ class model_concerts extends CI_Model{
         'link'=> $link);
             $this->db->insert('Videos', $data);
         }
-
-        function insertConcert($concerts, $lloc, $roba, $data, $lparti){
+		
+		function insertUsuari($usuari, $contrasenya, $rol){
+        $data = array(
+        'usuari'=> $usuari,
+        'contraseña'=> $contrasenya,
+        'rol'=> $rol);
+            $this->db->insert('Membres', $data);
+        }
+        
+        function insertConcert($concerts, $lloc, $roba, $data, $passacalles){
         $data = array(
         'Concert'=> $concerts,
         'DiaHora'=> $data,
         'Lloc'=> $lloc,
         'Roba'=> $roba,
-        'LlistaPartitures' => $lparti);
+        'Passcalles' => $passacalles);
        		$this->db->insert('Concert', $data);
         }
 
@@ -63,6 +77,20 @@ class model_concerts extends CI_Model{
         'Nom'=> $nom,
         'Partitura'=> $file_name);
             $this->db->insert('Partitures', $data);   
+        }
+
+         function eliminarConcert($id)  {
+            $this->db->delete('Concert', array('id_concert' => $id)); 
+        }
+         function eliminarAssajs($id)  {
+            $this->db->delete('Assajs', array('id_assajs' => $id)); 
+        }
+
+         function eliminarVideo($id)  {
+            $this->db->delete('Videos', array('id_video' => $id)); 
+        }
+        function eliminarPartitura($id)  {
+            $this->db->delete('Partitures', array('id_partitura' => $id)); 
         }
 }
 

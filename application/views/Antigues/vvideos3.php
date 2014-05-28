@@ -4,14 +4,18 @@
   <link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap3.min.css');?>">
   <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/jquery.datetimepicker.css');?>"/>
   <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+  <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.youtubeplaylist.js');?>"></script>
+  <link rel="stylesheet" href="<?php echo base_url('assets/css/youtube.css');?>"/>
   <meta name="description" content="BlocksIt.js jQuery plugin Demonstration #2 Pinterest dynamic grid with CSS3 Transitions by inWebson.com"/>
 <meta name="keywords" content="demonstration,demo,jquery,blocksit.js,css3,dynamic,grid,layout,inwebson"/>
+<script type="text/javascript" src="<?php echo base_url('assets/js/jquery.js');?>"></script>
 <link rel='stylesheet' href='<?php echo base_url('assets/css/pinterest.css');?>' media='screen' />
+
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <!--[if lt IE 9]>
 <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
-<script src="<?php echo base_url('assets/js/blocksit.js');?>"></script>
+<script src="<?php echo base_url('assets/js/blocksit.min.js');?>"></script>
 <script>
 $(document).ready(function() {
   //vendor script
@@ -75,27 +79,35 @@ Banda de Jesús</a>
     <div class="navbar-collapse collapse navbar-inverse-collapse">
         <ul class="nav navbar-nav">
           <li><a href="<?php echo base_url('index.php/welcome/vistaconcert');?>">Concerts</a></li>
-          <li class="active"><a href="<?php echo base_url('index.php/welcome/vistaassaj');?>">Assajos</a></li>
-          <li><a href="<?php echo base_url('index.php/welcome/vistapartitures');?>">Partitures</a></li>
-          <li><a href="<?php echo base_url('index.php/welcome/vistavideos');?>">YouTube</a></li>
+          <li ><a href="<?php echo base_url('index.php/welcome/vistaassaj');?>">Assajos</a></li>
+          <li ><a href="<?php echo base_url('index.php/welcome/vistapartitures');?>">Partitures</a></li>
+          <li class="active"><a href="<?php echo base_url('index.php/welcome/vistavideos');?>">YouTube</a></li>
+         <li><a href="#">Membres</a></li>
       </ul>
     </div>
   </div>
-<section id="wrapper">
 
-  <?php foreach($this->_ci_cached_vars as $index => $llistarassajs){ ?>
-  <div class="grid">
-    <div class="imgholder">
-      <img src="http://www.inwebson.com/demo/blocksit-js/demo2/images/img27.jpg" />
-    </div>
-    <strong>Assajs: <br><?php echo $llistarassajs['Assajs'];?></strong>
-    <strong>Dia i Hora: <br> <?php echo $llistarassajs['DiaHora'];?></strong>
-    <strong>Lloc:<br> <?php echo $llistarassajs['Lloc'];?></strong>
-    <strong>Prox. Actuació:<br> <?php echo $llistarassajs['ProxActuacio'];?></strong>
-  </div>
-   <?php } ?>
-   
-  </section>
+       <?php foreach($this->_ci_cached_vars as $index => $llistarvideos){ ?>
+          <ul class="video">  
+                <li><a href="<?php echo $llistarvideos['link']; ?>"></a></li>
+                
+            <?php } ?>
+        </ul>
  
     </body>
+
+    <script type="text/ecmascript">
+    
+        $(function() {
+            $("ul.video").ytplaylist({
+                addThumbs:true, 
+                autoPlay: false, 
+                playerWidth: '260',
+                playerHeight: '180',
+                thumbSize: 'large',
+                showInline: true
+                });
+        });
+    
+</script>
 </html>

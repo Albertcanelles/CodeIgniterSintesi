@@ -51,10 +51,10 @@ pre, code {
 
 .button {
 	display: block;
-	background: #ED5E2F;
+	background: #339966;
 	color: #FFF;
 	text-decoration: none;
-	width: 110px;
+	width: 150px;
 	text-align: center;
 	padding: 10px;
 	margin: 15px 0 0 15px;
@@ -87,50 +87,13 @@ pre, code {
 	-moz-border-radius: 3px;
 	border-radius: 3px;
 }
-
+/* Contingut de dins del text*/
 .custom p {
-	padding: 10px 20px;
+	font-family: "Consolas", "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
+	padding: 0px 0px;
 	margin: 30px 0 0;
-	font-size: 14px;
-	font-weight: 300;
-	text-align: justify;
-}
-
-.github, .twitter, .dribble {
-	float: left;
+	font-size: 18px;
+	font-weight: 100;
 	text-align: center;
-	font-size: 12px;
-	color: white;
-	padding: 8px 18px;
-	margin: 18px 0 0 20px;
-	text-decoration: none;
-	-webkit-transition: background 0.3s ease;
-	-moz-transition: background 0.3s ease;
-	-ms-transition: background 0.3s ease;
-	-o-transition: background 0.3s ease;
-	transition: background 0.3s ease;
 }
 
-.github {
-	background: rgba(83, 83, 83, 0.8);
-}
-
-.github:hover {
-	background: rgba(83, 83, 83, 1);
-}
-
-.twitter {
-	background: rgba(71, 186, 255, 0.8);
-}
-
-.twitter:hover {
-	background: rgba(71, 186, 255, 1);
-}
-
-.dribble {
-	background: rgba(241, 118, 122, 0.8);
-}
-
-.dribble:hover {
-	background: rgba(241, 118, 122, 1);
-}
