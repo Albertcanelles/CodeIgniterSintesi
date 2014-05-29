@@ -23,6 +23,17 @@ class Welcome extends CI_Controller {
 	}
 
 	public function insertarconcert() {
+		$this->form_validation->set_rules('Concert', 'Concert', 'required|xss_clean');
+		$this->form_validation->set_rules('Lloc', 'Lloc', 'required|xss_clean');
+		$this->form_validation->set_rules('Roba', 'Roba', 'required|xss_clean');
+		$this->form_validation->set_rules('Diahora', 'Diahora', 'required|xss_clean');
+		$this->form_validation->set_message('required', 'El camp %s es obligat');
+	
+		if($this->form_validation->run() == FALSE)
+			{
+				$data = $this->model_concerts->getconcert();
+				$this->load->view('Concerts', $data);
+			}else{
 		$concerts = $this->input->post('Concert');
 		$lloc = $this->input->post('Lloc');
 		$roba = $this->input->post('Roba');
@@ -48,6 +59,7 @@ class Welcome extends CI_Controller {
 		$pb->Push();
 		redirect('welcome/concert');
 	}
+	}
 	
 	public function assajs()
 	{
@@ -57,6 +69,16 @@ class Welcome extends CI_Controller {
 	}
 
 	public function insertarassajs() {
+		$this->form_validation->set_rules('Assajs', 'Assajs', 'required|xss_clean');
+		$this->form_validation->set_rules('Lloc', 'Lloc', 'required|xss_clean');
+		$this->form_validation->set_rules('proxact', 'proxact', 'required|xss_clean');
+		$this->form_validation->set_rules('Diahora', 'Diahora', 'required|xss_clean');
+		$this->form_validation->set_message('required', 'El camp %s es obligat');
+		if($this->form_validation->run() == FALSE)
+			{
+				$data = $this->model_concerts->getassajs();
+				$this->load->view('Assajos', $data);
+			}else{
 		$asaj = $this->input->post('Assajs');
 		$lloc = $this->input->post('Lloc');
 		$proxact = $this->input->post('proxact');
@@ -78,6 +100,7 @@ class Welcome extends CI_Controller {
 		// Push it !
 		$pb->Push();
 		redirect('welcome/assajs');	
+	}
 	}
 	
 	public function insertusuaris() {

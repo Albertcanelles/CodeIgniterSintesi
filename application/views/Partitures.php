@@ -13,12 +13,14 @@
 <link rel="stylesheet" type="text/css" href="http://www.datatables.net/release-datatables/media/css/demo_table.css">
 <link rel="stylesheet" type="text/css" href="http://www.datatables.net/release-datatables/media/css/demo_page.css">
      <link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap3.min.css');?>">
+     <link rel="stylesheet" href="<?php echo base_url('assets/css/estilsmeus.css');?>">
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
     <script type="text/javascript">
  $(document).ready(function() {
     $('#taula').dataTable(); <!-- Modificar taula per la teua id -->
  } );
 </script>
+
   </head>
   <body>
   <div class="navbar navbar-inverse">
@@ -36,7 +38,7 @@ Banda de Jesús</a>
       </ul>
     </div>
   </div>
-  <div class="row">
+  <div class="row fondo">
   <div class="col-md-5 col-xs-5">
   <? echo form_open_multipart('welcome/DoUpload');?>
 

@@ -16,7 +16,7 @@
   <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/jquery.datetimepicker.css');?>"/>
         
         <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.datetimepicker.js');?>"></script>
-       
+       <link rel="stylesheet" href="<?php echo base_url('assets/css/estilsmeus.css');?>">
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
     <script type="text/javascript">
@@ -24,6 +24,7 @@
     $('#taula').dataTable(); <!-- Modificar taula per la teua id -->
  } );
 </script>
+
   </head>
   <body>
   <div class="navbar navbar-inverse">
@@ -41,13 +42,14 @@ Banda de Jesús</a>
       </ul>
     </div>
   </div>
-  <div class="row">
+  <div class="row fondo">
   <div class="col-md-5 col-xs-5">
+  <h2><?php echo validation_errors(); ?></h2>
 <form class="form-horizontal" method="post" action="insertarassajs">
 
     <legend align="center">Assajos</legend>
     <div class="form-group">
-      <label for="inputAssajs" class=" col-sm-5 col-xs-5 control-label">Assajs</label>
+      <label for="inputAssajs" class=" col-sm-5 col-xs-5 control-label">Assaigs</label>
       <div class="col-lg-6">
         <input type="text" class="form-control" id="inputAssajs" name="Assajs" placeholder="Assajs">
       </div>
@@ -70,6 +72,7 @@ Banda de Jesús</a>
         <input type="text" class="form-control" id="inputProxAct" name="proxact" placeholder="Proxima Actuació">
       </div>
     </div>
+
     <div class="form-group">
       <div class="col-lg-5 col-lg-offset-6">
         
