@@ -8,7 +8,7 @@
 	<body>
   <div class="navbar navbar-inverse">
   	<div class="navbar-header"> 	
-    	<a class="navbar-brand" href="<?php echo base_url();?>"><span class="glyphicon glyphicon-music"></span>
+    	<a class="navbar-brand" href="<?php echo base_url().'index.php/welcome/index';?>"><span class="glyphicon glyphicon-music"></span>
 Banda de Jesús</a>
     </div>
   	<div class="navbar-collapse collapse navbar-inverse-collapse">
@@ -18,7 +18,13 @@ Banda de Jesús</a>
         <li><a href="<?php echo base_url('index.php/welcome/partitura');?>">Partitures</a></li>
         <li><a href="<?php echo base_url('index.php/welcome/video');?>">YouTube</a></li>
        <li><a href="<?php echo base_url('index.php/welcome/membre');?>">Membres</a></li>
+        <li ><a href="<?php echo base_url('index.php/welcome/vistaconcertadmin');?>"> Vista Concerts</a></li>
+        <li><a href="<?php echo base_url('index.php/welcome/vistaassajadmin');?>">Vista Assajos</a></li>
+        <li><a href="<?php echo base_url('index.php/welcome/vistapartituresadmin');?>">Vista Partitures</a></li>
+        <li><a href="<?php echo base_url('index.php/welcome/vistavideosadmin');?>">Vista YouTube</a></li>
+       <li><a href="<?php echo base_url('index.php/home/logout');?>">Sortir</a></li>
    	  </ul>
+      
   	</div>
   </div>
   <blockquote>

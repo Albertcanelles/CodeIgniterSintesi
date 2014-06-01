@@ -78,6 +78,7 @@ Banda de Jesús</a>
           <li><a href="<?php echo base_url('index.php/welcome/vistaassaj');?>">Assajos</a></li>
           <li class="active"><a href="<?php echo base_url('index.php/welcome/vistapartitures');?>">Partitures</a></li>
           <li><a href="<?php echo base_url('index.php/welcome/vistavideos');?>">YouTube</a></li>
+          <li><a href="<?php echo base_url('index.php/home/logout');?>">Sortir</a></li>
       </ul>
     </div>
   </div>

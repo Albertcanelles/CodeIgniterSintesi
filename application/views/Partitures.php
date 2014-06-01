@@ -8,7 +8,8 @@
 <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"></script>
  
 <!-- DataTables -->
-<script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url('assets/js/jquery.dataTables.js');?>"></script>
+<!--<script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>-->
  <!-- DataTables CSS -->
 <link rel="stylesheet" type="text/css" href="http://www.datatables.net/release-datatables/media/css/demo_table.css">
 <link rel="stylesheet" type="text/css" href="http://www.datatables.net/release-datatables/media/css/demo_page.css">
@@ -25,7 +26,7 @@
   <body>
   <div class="navbar navbar-inverse">
     <div class="navbar-header">   
-      <a class="navbar-brand" href="<?php echo base_url();?>"><span class="glyphicon glyphicon-music"></span>
+      <a class="navbar-brand" href="<?php echo base_url().'index.php/welcome/index';?>"><span class="glyphicon glyphicon-music"></span>
 Banda de Jesús</a>
     </div>
     <div class="navbar-collapse collapse navbar-inverse-collapse">
@@ -35,6 +36,11 @@ Banda de Jesús</a>
         <li class="active"><a href="<?php echo base_url('index.php/welcome/partitura');?>">Partitures</a></li>
         <li><a href="<?php echo base_url('index.php/welcome/video');?>">YouTube</a></li>
        <li><a href="<?php echo base_url('index.php/welcome/membre');?>">Membres</a></li>
+        <li ><a href="<?php echo base_url('index.php/welcome/vistaconcertadmin');?>"> Vista Concerts</a></li>
+        <li><a href="<?php echo base_url('index.php/welcome/vistaassajadmin');?>">Vista Assajos</a></li>
+        <li><a href="<?php echo base_url('index.php/welcome/vistapartituresadmin');?>">Vista Partitures</a></li>
+        <li><a href="<?php echo base_url('index.php/welcome/vistavideosadmin');?>">Vista YouTube</a></li>
+       <li><a href="<?php echo base_url('index.php/home/logout');?>">Sortir</a></li>
       </ul>
     </div>
   </div>
@@ -81,11 +87,6 @@ Banda de Jesús</a>
                 <td><?php echo $llistarpartitura['Nom']; ?></td>
                 <td><?php echo $llistarpartitura['Partitura']; ?></td>
                 <td>
-                    <a href='/codeigniterusuaris/index.php/usuaris/modificar/<?php echo $llistarpartitura['id_video']; ?>'>
-                        <button type="button" class="btn btn-warning btn-sm">
-                            <span class="glyphicon glyphicon-pencil"></span> 
-                        </button>
-                    </a>&nbsp;
                     <a href='/admin/index.php/welcome/eliminarPartitures/<?php echo $llistarpartitura['id_partitura']; ?>'>
                         <button type="button" class="btn btn-danger btn-sm">
                             <span class="glyphicon glyphicon-remove"></span> 

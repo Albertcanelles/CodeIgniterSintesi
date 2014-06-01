@@ -63,6 +63,14 @@
 					"Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb"
 				]
 			},
+			cat:{ // Catala
+				months: [
+					"Gener", "Febrer", "Març", "Abril", "Maig", "Juny", "Juliol", "Agost", "Septembre", "Octubre", "Novembre", "Dicembre"
+				],
+				dayOfWeek: [
+					"Dg.", "Dl.", "Dt.", "Dc.", "Dj.", "Dv.", "Ds."
+				]
+			},
 			th:{ // Thai
 				months:[
 					'มกราคม','กุมภาพันธ์','มีนาคม','เมษายน','พฤษภาคม','มิถุนายน','กรกฎาคม','สิงหาคม','กันยายน','ตุลาคม','พฤศจิกายน','ธันวาคม'
@@ -145,11 +153,11 @@
 			},
 		},
 		value:'',
-		lang:				'en',
+		lang:				'cat',
 		
-		format:			'Y/m/d H:i',
+		format:			'H:i d/m/Y',
 		formatTime:	'H:i',
-		formatDate:	'Y/m/d',
+		formatDate:	'd/m/Y',
 		
 		startDate:	false, // new Date(), '1986/12/08', '-1970/01/05','-1970/01/05', 
 		

@@ -8,7 +8,7 @@ class model_concerts extends CI_Model{
         $this->load->database();
         
     }
-        
+        // Tots els gets que consulten les dades a la base dades 
 
         function getconcert() {      
         $this->db->select('id_concert,Concert,DiaHora,Lloc,Roba,Passcalles');
@@ -38,10 +38,23 @@ class model_concerts extends CI_Model{
             $query = $this->db->get('Membres');
             return $query->result_array();
         }
-        function insertAssajs($asaj, $lloc, $proxact, $data){
+
+        // Tots els inserts que inserten dades
+
+         function insertConcert($concerts, $lloc, $roba, $fecha, $passacalles){
+        $data = array(
+        'Concert'=> $concerts,
+        'DiaHora'=> $fecha,
+        'Lloc'=> $lloc,
+        'Roba'=> $roba,
+        'Passcalles' => $passacalles);
+            $this->db->insert('Concert', $data);
+        }
+
+        function insertAssajs($asaj, $lloc, $proxact, $fecha){
         $data = array(
         'Assajs'=> $asaj,
-        'DiaHora'=> $data,
+        'DiaHora'=> $fecha,
         'Lloc'=> $lloc,
         'ProxActuacio'=> $proxact);
         $this->db->insert('Assajs', $data);
@@ -57,20 +70,11 @@ class model_concerts extends CI_Model{
 		function insertUsuari($usuari, $contrasenya, $rol){
         $data = array(
         'usuari'=> $usuari,
-        'contraseña'=> $contrasenya,
+        'contraseña'=> md5($contrasenya),
         'rol'=> $rol);
             $this->db->insert('Membres', $data);
         }
         
-        function insertConcert($concerts, $lloc, $roba, $data, $passacalles){
-        $data = array(
-        'Concert'=> $concerts,
-        'DiaHora'=> $data,
-        'Lloc'=> $lloc,
-        'Roba'=> $roba,
-        'Passcalles' => $passacalles);
-       		$this->db->insert('Concert', $data);
-        }
 
         function insertPartitures($nom, $file_name) {
          $data = array(
@@ -78,6 +82,8 @@ class model_concerts extends CI_Model{
         'Partitura'=> $file_name);
             $this->db->insert('Partitures', $data);   
         }
+
+        // Tots els delete per eliminar les dades
 
          function eliminarConcert($id)  {
             $this->db->delete('Concert', array('id_concert' => $id)); 
@@ -91,6 +97,38 @@ class model_concerts extends CI_Model{
         }
         function eliminarPartitura($id)  {
             $this->db->delete('Partitures', array('id_partitura' => $id)); 
+        }
+        function eliminarMembre($id)  {
+            $this->db->delete('Membres', array('id_membre' => $id)); 
+        }
+
+        // Tots els update
+
+         function modificarMembres($id, $contra)
+    {
+
+        $data = array('contraseña' => md5($contra));
+        $this->db->where('id_membre',$id);
+        $this->db->update('Membres', $data);
+    }
+    function modificarConcert($id, $concerts, $lloc, $roba, $fecha, $passacalles){
+        $data = array(
+        'Concert'=> $concerts,
+        'DiaHora'=> $fecha,
+        'Lloc'=> $lloc,
+        'Roba'=> $roba,
+        'Passcalles' => $passacalles);
+            $this->db->where('id_concert',$id);
+            $this->db->update('Concert', $data);
+        }
+    function modificarAssaigs($id, $asaj, $lloc, $proxact, $fecha){
+        $data = array(
+        'Assajs'=> $asaj,
+        'DiaHora'=> $fecha,
+        'Lloc'=> $lloc,
+        'ProxActuacio'=> $proxact);
+            $this->db->where('id_assajs',$id);
+            $this->db->update('Assajs', $data);
         }
 }
 

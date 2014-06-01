@@ -17,14 +17,18 @@ Banda de Jesús</a>
         <li><a href="<?php echo base_url('index.php/welcome/vistaassaj');?>">Assajos</a></li>
         <li><a href="<?php echo base_url('index.php/welcome/vistapartitures');?>">Partitures</a></li>
         <li><a href="<?php echo base_url('index.php/welcome/vistavideos');?>">YouTube</a></li>
+        <li><a href="<?php echo base_url('index.php/home/logout');?>">Sortir</a></li>
    	  </ul>
+      
   	</div>
   </div>
   <blockquote>
 <h1>Benvingut Músics de l'escola</h1>
 
   <h2>Aquesta es la part per gestionar la banda</h2>
- 
 </blockquote>
+
 	</body>
+
 </html>
+

@@ -8,7 +8,8 @@
 <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"></script>
  
 <!-- DataTables -->
-<script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url('assets/js/jquery.dataTables.js');?>"></script>
+<!--<script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>-->
  <!-- DataTables CSS -->
 <link rel="stylesheet" type="text/css" href="http://www.datatables.net/release-datatables/media/css/demo_table.css">
 <link rel="stylesheet" type="text/css" href="http://www.datatables.net/release-datatables/media/css/demo_page.css">
@@ -16,9 +17,11 @@
   <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/jquery.datetimepicker.css');?>"/>
         
         <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.datetimepicker.js');?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('assets/js/bootstrap-confirmation.js');?>"></script>
        <link rel="stylesheet" href="<?php echo base_url('assets/css/estilsmeus.css');?>">
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/js/bootstrap.js" rel="stylesheet">
+
     <script type="text/javascript">
  $(document).ready(function() {
     $('#taula').dataTable(); <!-- Modificar taula per la teua id -->
@@ -29,7 +32,7 @@
   <body>
   <div class="navbar navbar-inverse">
     <div class="navbar-header">   
-      <a class="navbar-brand" href="<?php echo base_url();?>"><span class="glyphicon glyphicon-music"></span>
+      <a class="navbar-brand" href="<?php echo base_url().'index.php/welcome/index';?>"><span class="glyphicon glyphicon-music"></span>
 Banda de Jesús</a>
     </div>
     <div class="navbar-collapse collapse navbar-inverse-collapse">
@@ -39,6 +42,11 @@ Banda de Jesús</a>
         <li><a href="<?php echo base_url('index.php/welcome/partitura');?>">Partitures</a></li>
         <li><a href="<?php echo base_url('index.php/welcome/video');?>">YouTube</a></li>
        <li><a href="<?php echo base_url('index.php/welcome/membre');?>">Membres</a></li>
+        <li ><a href="<?php echo base_url('index.php/welcome/vistaconcertadmin');?>"> Vista Concerts</a></li>
+        <li><a href="<?php echo base_url('index.php/welcome/vistaassajadmin');?>">Vista Assajos</a></li>
+        <li><a href="<?php echo base_url('index.php/welcome/vistapartituresadmin');?>">Vista Partitures</a></li>
+        <li><a href="<?php echo base_url('index.php/welcome/vistavideosadmin');?>">Vista YouTube</a></li>
+       <li><a href="<?php echo base_url('index.php/home/logout');?>">Sortir</a></li>
       </ul>
     </div>
   </div>
@@ -51,7 +59,7 @@ Banda de Jesús</a>
     <div class="form-group">
       <label for="inputAssajs" class=" col-sm-5 col-xs-5 control-label">Assaigs</label>
       <div class="col-lg-6">
-        <input type="text" class="form-control" id="inputAssajs" name="Assajs" placeholder="Assajs">
+        <input type="text" class="form-control" id="inputAssajs" name="Assajs" placeholder="Assaigs">
       </div>
     </div>
     <div class="form-group">
@@ -88,10 +96,10 @@ Banda de Jesús</a>
         <thead>
             <tr>
                  <th>ID</th>
-                <th>Assajs</th>
-                <th>DiaHora</th>
+                <th>Assaigs</th>
+                <th>Dia i Hora</th>
                 <th>Lloc</th>
-                <th>ProxActuacio</th>
+                <th>Pròxima Actuació</th>
                 <th>Accions</th>
             </tr>
         </thead>
@@ -104,7 +112,7 @@ Banda de Jesús</a>
                 <td><?php echo $llistarassajos['Lloc']; ?></td>
                 <td><?php echo $llistarassajos['ProxActuacio']; ?></td>  
                 <td>
-                    <a href='/codeigniterusuaris/index.php/usuaris/modificar/<?php echo $llistarassajos['id_assajs']; ?>'>
+                    <a href='/admin/index.php/welcome/updateAssaigs/<?php echo $llistarassajos['id_assajs']; ?>'>
                         <button type="button" class="btn btn-warning btn-sm">
                             <span class="glyphicon glyphicon-pencil"></span> 
                         </button>
@@ -121,8 +129,8 @@ Banda de Jesús</a>
     </table>
 </div>
 </div>
-
 </div>
+
   </body>
    <script type="text/javascript">
 // Script per a les dates i hores
@@ -131,7 +139,7 @@ Banda de Jesús</a>
 
     $('#datetimepicker_mask').datetimepicker({
     mask:'9999/19/39 29:59'
+    //mask:'39/19/9999 29:59'
 });
     </script>   
-
 </html>

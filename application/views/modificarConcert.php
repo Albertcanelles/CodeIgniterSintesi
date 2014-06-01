@@ -1,6 +1,6 @@
-<html lang="en-ES">
+ <html lang="en-ES">
 <meta charset="utf-8">
-	<head>
+  <head>
 
 <!-- DataTables CSS -->
 <link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css">
@@ -23,9 +23,6 @@
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
     <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/js/bootstrap.js" rel="stylesheet">
     <link href="//cdn.datatables.net/plug-ins/28e7751dbec/i18n/Catalan.json" rel="stylesheet">
-
-    
-    
     <script>
  $(document).ready(function() {
     $('#taula').dataTable(); <!-- Modificar taula per la teua id -->
@@ -34,34 +31,12 @@
  } );
 </script>
   
-	</head>
-	<body>
-  <div class="navbar navbar-inverse">
-  	<div class="navbar-header"> 	
-    	<a class="navbar-brand" href="<?php echo base_url().'index.php/welcome/index';?>"><span class="glyphicon glyphicon-music"></span>
-Banda de Jesús</a>
-    </div>
-  	<div class="navbar-collapse collapse navbar-inverse-collapse">
-    	<ul class="nav navbar-nav">
-    	  <li class="active"><a href="<?php echo base_url('index.php/welcome/concert');?>">Concerts</a></li>
-    	  <li><a href="<?php echo base_url('index.php/welcome/assajs');?>">Assajos</a></li>
-    	  <li><a href="<?php echo base_url('index.php/welcome/partitura');?>">Partitures</a></li>
-    	  <li><a href="<?php echo base_url('index.php/welcome/video');?>">YouTube</a></li>
-     	 <li><a href="<?php echo base_url('index.php/welcome/membre');?>">Membres</a></li>
-        <li ><a href="<?php echo base_url('index.php/welcome/vistaconcertadmin');?>"> Vista Concerts</a></li>
-        <li><a href="<?php echo base_url('index.php/welcome/vistaassajadmin');?>">Vista Assajos</a></li>
-        <li><a href="<?php echo base_url('index.php/welcome/vistapartituresadmin');?>">Vista Partitures</a></li>
-        <li><a href="<?php echo base_url('index.php/welcome/vistavideosadmin');?>">Vista YouTube</a></li>
-       <li><a href="<?php echo base_url('index.php/home/logout');?>">Sortir</a></li>
-   	  </ul>
-  	</div>
-  </div>
-  <!--Div que conte la taula i el formulari -->
-  <div class="row fondo">
+  </head>
+  <body>
+ <div class="row fondo">
   <div class="col-md-5 col-xs-5 contenedor">
     <h2><?php echo validation_errors(); ?></h2>
-    <!--Dalt el echo que ens pinta si tenim errors al forumali baix el formulari que inserta a concerts -->
-<form class="form-horizontal" method="post" action="insertarconcert">
+<form class="form-horizontal" method="post">
 
     <legend align="center">Concerts</legend>
     <div class="form-group">
@@ -112,57 +87,8 @@ Banda de Jesús</a>
       </div>
     </div>
     </div>
-      <div class="col-md-7 taula">
     </form>
-    
-    <div>
-    <br>
-<!--Aquesta es la taula on es mostren les dades -->
-  <table class="display" id="taula" border="1" bordercolor="#000000" width="100%" cellpadding="3" cellspacing="3">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Concert</th>
-                <th>Dia i Hora</th>
-                <th>Lloc</th>
-                <th>Roba</th>
-                <th>PassaCarrers </th>
-                <th>Accions</th>
-                
-            </tr>
-        </thead>
-        <tbody>  
-        <!--Llisto les dades amb un for each -->
-            <?php foreach($this->_ci_cached_vars as $index => $llistarconcert){ ?>
-            <tr>
-                <td><?php echo $llistarconcert['id_concert']; ?></td>
-                <td><?php echo $llistarconcert['Concert']; ?></td>
-                <td><?php echo $llistarconcert['DiaHora']; ?></td>
-                <td><?php echo $llistarconcert['Lloc']; ?></td>
-                <td><?php echo $llistarconcert['Roba']; ?></td>
-                <td><?php echo $llistarconcert['Passcalles']; ?></td>  
-                <td>
-                    <a href='/admin/index.php/welcome/updateConcerts/<?php echo $llistarconcert['id_concert']; ?>'>
-                        <button type="button" class="btn btn-warning btn-sm">
-                            <span class="glyphicon glyphicon-pencil"></span> 
-                        </button>
-                    </a>
-                    <a href='/admin/index.php/welcome/eliminarConcerts/<?php echo $llistarconcert['id_concert']; ?>'>
-                        <button type="button" class="btn btn-danger btn-sm eliminar">
-                            <span class="glyphicon glyphicon-remove"></span> 
-                        </button>
-                    </a> 
-                </td>
-            </tr>
-            <?php } ?>
-        </tbody>
-    </table>
-</div>
-</div>
-
-</div>
-	</body>
-  <!--Plugin per al desplegable de data i hora -->
+    </body>
     <script type="text/javascript">
 // Script per a les dates i hores
     $('#datetimepicker').datetimepicker()
@@ -173,4 +99,4 @@ Banda de Jesús</a>
     mask:'39/19/9999 29:59'
 });
     </script>   
-</html>
+    </html>

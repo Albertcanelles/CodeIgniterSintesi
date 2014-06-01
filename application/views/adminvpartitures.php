@@ -1,6 +1,6 @@
 <html lang="en-ES">
 <meta charset="utf-8">
-	<head>
+    <head>
   <link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap3.min.css');?>">
   <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/jquery.datetimepicker.css');?>"/>
   <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
@@ -65,39 +65,41 @@ $(document).ready(function() {
   });
 });
 </script>
-	</head>
-	<body>
+    </head>
+    <body>
   <div class="navbar navbar-inverse">
-  	<div class="navbar-header"> 	
-    	<a class="navbar-brand" href="<?php echo base_url('index.php/welcome/welcomemembers');?>"><span class="glyphicon glyphicon-music"></span>
+    <div class="navbar-header">     
+        <a class="navbar-brand" href="<?php echo base_url('index.php/welcome/welcomemembers');?>"><span class="glyphicon glyphicon-music"></span>
 Banda de Jesús</a>
     </div>
-  	<div class="navbar-collapse collapse navbar-inverse-collapse">
-    	<ul class="nav navbar-nav">
-    	  <li class="active"><a href="<?php echo base_url('index.php/welcome/vistaconcert');?>">Concerts</a></li>
-    	  <li><a href="<?php echo base_url('index.php/welcome/vistaassaj');?>">Assajos</a></li>
-    	  <li><a href="<?php echo base_url('index.php/welcome/vistapartitures');?>">Partitures</a></li>
-    	  <li><a href="<?php echo base_url('index.php/welcome/vistavideos');?>">YouTube</a></li>
-        <li><a href="<?php echo base_url('index.php/home/logout');?>">Sortir</a></li>
-   	  </ul>
-  	</div>
+    <div class="navbar-collapse collapse navbar-inverse-collapse">
+        <ul class="nav navbar-nav">
+        <li><a href="<?php echo base_url('index.php/welcome/concert');?>">Concerts</a></li>
+        <li><a href="<?php echo base_url('index.php/welcome/assajs');?>">Assajos</a></li>
+        <li><a href="<?php echo base_url('index.php/welcome/partitura');?>">Partitures</a></li>
+        <li><a href="<?php echo base_url('index.php/welcome/video');?>">YouTube</a></li>
+       <li><a href="<?php echo base_url('index.php/welcome/membre');?>">Membres</a></li>
+        <li ><a href="<?php echo base_url('index.php/welcome/vistaconcertadmin');?>"> Vista Concerts</a></li>
+        <li><a href="<?php echo base_url('index.php/welcome/vistaassajadmin');?>">Vista Assajos</a></li>
+        <li class="active"><a href="<?php echo base_url('index.php/welcome/vistapartituresadmin');?>">Vista Partitures</a></li>
+        <li><a href="<?php echo base_url('index.php/welcome/vistavideosadmin');?>">Vista YouTube</a></li>
+          <li><a href="<?php echo base_url('index.php/home/logout');?>">Sortir</a></li>
+      </ul>
+    </div>
   </div>
 <section id="wrapper">
 
-  <?php foreach($this->_ci_cached_vars as $index => $llistarconcert){ ?>
+   <?php foreach($this->_ci_cached_vars as $index => $llistarpartitures){ ?>
   <div class="grid">
     <div class="imgholder">
       <img src="http://www.inwebson.com/demo/blocksit-js/demo2/images/img27.jpg" />
     </div>
-    <strong> Concert: <br> <?php echo $llistarconcert['Concert'];?></strong>
-    <strong> Dia i Hora: <br> <?php echo $llistarconcert['DiaHora'];?></strong>
-    <strong> Lloc: <br> <?php echo $llistarconcert['Lloc'];?></strong>
-    <strong> Roba: <br> <?php echo $llistarconcert['Roba'];?></strong>
-    <strong> Passacalles: <br> <?php echo $llistarconcert['Passcalles'];?></strong>
+    <strong><a href='<?php echo $llistarpartitures['Partitura'];?>'><?php echo $llistarpartitures['Nom']; ?> </a></strong>
+
   </div>
    <?php } ?>
    
   </section>
  
-	</body>
+    </body>
 </html>
