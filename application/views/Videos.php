@@ -22,6 +22,15 @@
  } );
 </script>
 
+ <script language="Javascript"> 
+    function confirmar(){ 
+    confirmar=confirm("¿Segur que vols borrarlo?"); 
+    if (confirmar) 
+    return true;
+    else 
+    return false;
+    </script>
+
   </head>
   <body>
   <div class="navbar navbar-inverse">
@@ -46,6 +55,7 @@ Banda de Jesús</a>
   </div>
   <div class="row fondo">
   <div class="col-md-5 col-xs-5">
+  <h2><?php echo validation_errors(); ?></h2>
 <form class="form-horizontal" method="post" action="insertvideos">
 
     <legend align="center">Videos</legend>
@@ -96,8 +106,8 @@ Banda de Jesús</a>
                             <span class="glyphicon glyphicon-pencil"></span> 
                         </button>
                     </a>&nbsp;
-                    <a href='/admin/index.php/welcome/eliminarVideos/<?php echo $llistarvideos['id_video']; ?>'>
-                        <button type="button" class="btn btn-danger btn-sm" onclick="return confirmar(‘¿Está seguro que desea eliminar el registro?’)">
+                    <a href='/admin/index.php/welcome/eliminarVideos/<?php echo $llistarvideos['id_video']; ?>'  onclick="return confirm('Estas segur que vols eliminar aquest vídeo?);">
+                        <button type="button" class="btn btn-danger btn-sm">
                             <span class="glyphicon glyphicon-remove"></span> 
                         </button>
                     </a> 

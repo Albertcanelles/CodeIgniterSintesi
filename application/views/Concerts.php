@@ -33,6 +33,15 @@
     
  } );
 </script>
+
+ <script language="Javascript"> 
+    function confirmar(){ 
+    confirmar=confirm("¿Segur que vols borrarlo?"); 
+    if (confirmar) 
+    return true;
+    else 
+    return false;
+    </script>
   
 	</head>
 	<body>
@@ -147,7 +156,7 @@ Banda de Jesús</a>
                             <span class="glyphicon glyphicon-pencil"></span> 
                         </button>
                     </a>
-                    <a href='/admin/index.php/welcome/eliminarConcerts/<?php echo $llistarconcert['id_concert']; ?>'>
+                    <a href='/admin/index.php/welcome/eliminarConcerts/<?php echo $llistarconcert['id_concert']; ?>' onclick="return confirm('Estas segur que vols eliminar el concert?');">
                         <button type="button" class="btn btn-danger btn-sm eliminar">
                             <span class="glyphicon glyphicon-remove"></span> 
                         </button>

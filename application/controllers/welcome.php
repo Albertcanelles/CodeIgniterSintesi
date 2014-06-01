@@ -209,7 +209,7 @@ class Welcome extends CI_Controller {
 		);
 		$this->upload->initialize($config_file);
 		if (!$this->upload->do_upload('cipote')) {
-			$error = $this->upload->display_errors();
+			$error = $this->upload->display_errors('No has introduit res    ');
 			echo $error;
 		}
 		else {

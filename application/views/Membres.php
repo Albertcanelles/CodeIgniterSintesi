@@ -22,6 +22,15 @@
     $('#taula').dataTable(); <!-- Modificar taula per la teua id -->
  } );
 </script>
+
+ <script language="Javascript"> 
+    function confirmar(){ 
+    confirmar=confirm("¿Segur que vols borrarlo?"); 
+    if (confirmar) 
+    return true;
+    else 
+    return false;
+    </script>
     </head>
     <body>
   <div class="navbar navbar-inverse">
@@ -46,6 +55,7 @@ Banda de Jesús</a>
   </div>
   <div class="row fondo">
   <div class="col-md-5 col-xs-5 contenedor">
+  <h2><?php echo validation_errors(); ?></h2>
 <form class="form-horizontal"  method="post" action="insertusuaris">
 
     <legend align="center">Membres</legend>
@@ -108,12 +118,12 @@ Banda de Jesús</a>
                 <td><?php echo $llistarmembre['usuari']; ?></td>
                 <td><?php echo $llistarmembre['rol']; ?></td>  
                 <td>
-                    <a href='/admin/index.php/welcome/updateMembre/<?php echo $llistarmembre['id_membre']; ?>'>
+                    <a href='/admin/index.php/welcome/updateMembre/<?php echo $llistarmembre['id_membre']; ?> '>
                         <button type="button" class="btn btn-warning btn-sm">
                             <span class="glyphicon glyphicon-pencil"></span> 
                         </button>
                     </a>
-                    <a href='/admin/index.php/welcome/eliminarMembres/<?php echo $llistarmembre['id_membre']; ?>'>
+                    <a href='/admin/index.php/welcome/eliminarMembres/<?php echo $llistarmembre['id_membre']; ?>'  onclick="return confirm('Estas segur que vols elimnar un membre?);">
                         <button type="button" class="btn btn-danger btn-sm">
                             <span class="glyphicon glyphicon-remove"></span> 
                         </button>

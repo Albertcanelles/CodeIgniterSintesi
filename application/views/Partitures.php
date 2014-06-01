@@ -22,6 +22,15 @@
  } );
 </script>
 
+ <script language="Javascript"> 
+    function confirmar(){ 
+    confirmar=confirm("¿Segur que vols borrarlo?"); 
+    if (confirmar) 
+    return true;
+    else 
+    return false;
+    </script>
+
   </head>
   <body>
   <div class="navbar navbar-inverse">
@@ -87,7 +96,7 @@ Banda de Jesús</a>
                 <td><?php echo $llistarpartitura['Nom']; ?></td>
                 <td><?php echo $llistarpartitura['Partitura']; ?></td>
                 <td>
-                    <a href='/admin/index.php/welcome/eliminarPartitures/<?php echo $llistarpartitura['id_partitura']; ?>'>
+                    <a href='/admin/index.php/welcome/eliminarPartitures/<?php echo $llistarpartitura['id_partitura']; ?>'  onclick="return confirm('Estas segur que vols eliminar aquesta partitura?);">
                         <button type="button" class="btn btn-danger btn-sm">
                             <span class="glyphicon glyphicon-remove"></span> 
                         </button>

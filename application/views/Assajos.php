@@ -28,6 +28,15 @@
  } );
 </script>
 
+ <script language="Javascript"> 
+    function confirmar(){ 
+    confirmar=confirm("¿Segur que vols borrarlo?"); 
+    if (confirmar) 
+    return true;
+    else 
+    return false;
+    </script>
+
   </head>
   <body>
   <div class="navbar navbar-inverse">
@@ -117,7 +126,7 @@ Banda de Jesús</a>
                             <span class="glyphicon glyphicon-pencil"></span> 
                         </button>
                     </a>
-                    <a href='/admin/index.php/welcome/eliminarAssajos/<?php echo $llistarassajos['id_assajs']; ?>'>
+                    <a href='/admin/index.php/welcome/eliminarAssajos/<?php echo $llistarassajos['id_assajs']; ?>'  onclick="return confirm('Confirmació. Estas segur que vols eliminar aquest assaigs?');">
                         <button type="button" class="btn btn-danger btn-sm">
                             <span class="glyphicon glyphicon-remove"></span> 
                         </button>
